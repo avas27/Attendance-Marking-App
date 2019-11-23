@@ -1,0 +1,30 @@
+<table class="ng-scope">
+  <thead></thead>
+  <tr>
+    <th>Sr. No.</th>
+    <th>Name</th>
+    <th>Reg. No.</th>
+    <th>Roll</th>
+    <th>Attendance</th>
+  </tr>
+  <tr
+    ng-repeat="student in students2 | orderBy:sortBy:seq"
+    class="row"
+    id="{{student.reg}}"
+  >
+    <td>{{$index+1}}</td>
+    <td>{{student.name}}</td>
+    <td>{{student.reg}}</td>
+    <td>{{student.roll}}</td>
+    <td>
+      <select
+        ng-model="student.attendance"
+        ng-click="getId(student.reg,$index,'popm21')"
+        ng-mouseleave="totalCount()"
+      >
+        <option value="p">Present</option>
+        <option value="a">Absent</option>
+      </select>
+    </td>
+  </tr>
+</table>

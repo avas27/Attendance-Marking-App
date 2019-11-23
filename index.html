@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="attendanceModule">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="angular.min.js"></script>
+
+    <title>Attendance App</title>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(245, 245, 191);
+        font-family: sans-serif;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+      table th,
+      table td {
+        border: 1px solid black;
+        padding: 10px 20px;
+      }
+      table th {
+        background-color: #1a1b1d;
+        color: white;
+      }
+      .row {
+        background-color: rgb(131, 253, 131);
+      }
+
+      .present {
+        background-color: green;
+      }
+      .absent {
+        background-color: red;
+      }
+      .absentMarked {
+        background-color: rgb(250, 114, 114);
+      }
+      #sbmt,#sbmt1,#sbmt2 {
+        width: 100px;
+        padding: 10px;
+        background-color: rgb(92, 209, 255);
+        border-radius: 10px;
+        border: none;
+        box-shadow: 1px 1px 10px black;
+        margin:0 25px;
+      }
+      #sbmt1{
+        background-color: rgb(97, 255, 92);
+      }
+      #sbmt2{
+        background-color: rgb(255, 92, 92);
+      }
+    </style>
+  </head>
+  <body ng-controller="attendanceTaker" >
+      <h2>Attendance App</h2>
+      <div style="margin-bottom: 20px;">
+        <select ng-model="sec" ng-click="getSection(sec)">
+          <option value="avas27">Section: avas27</option>
+          <option value="popm21">Section: popm21</option>
+        </select>
+        <select ng-model="sortBy"
+          ><option value="name">Name</option
+          ><option value="reg">Registration No</option>
+          <option value="roll">Roll No</option></select
+        >
+        <button ng-click="setOrder()" id="btn" style="width: 50px;">
+          Inc.
+        </button>
+      </div>
+      <div ng-include="sec+'.html'"></div>
+    <h5>Total Count: {{total}}</h5>
+    </div>
+    <div>
+      <h5>Present: {{p}}</h5>
+      <h5>Absent: {{a}}</h5>
+    </div>
+    <div>
+        <button ng-click="presentAll()" id="sbmt1">Present All</button><button ng-click="submitForm()" id="sbmt">Submit</button><button ng-click="absentAll()" id="sbmt2">Absent All</button>
+    </div>
+    <script src="attendanceModule.js"></script>
+  </body>
+</html>
